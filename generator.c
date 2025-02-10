@@ -308,7 +308,10 @@ int main (int argc, char *argv[]){
             for (j = 0; j < DUNGEON_WIDTH; j++) {
                 // grid[i][j] = '~';
                 grid[i][j].type = ROCK;
-                grid[i][j].hardness = rand() % (MAX_HARDNESS - MIN_HARDNESS + 1);
+                grid[i][j].hardness = rand() % (MAX_HARDNESS - 1 - MIN_HARDNESS + 1);
+                if (i == 0 || i == DUNGEON_HEIGHT - 1 || j == 0 || j == DUNGEON_WIDTH - 1) {
+                    grid[i][j].hardness = MAX_HARDNESS;
+                }
             }
         }
 
