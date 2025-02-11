@@ -243,12 +243,6 @@ void print_grid(const dungeon *d){
 }
 
 bool generate_random_dungeon(dungeon *d){
-    // srand(time(NULL));
-
-    // Seed random number generator
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    srand(tv.tv_usec ^ getpid());
     int i, j;
     int num_rooms;
 

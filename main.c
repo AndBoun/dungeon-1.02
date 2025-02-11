@@ -13,9 +13,6 @@ int main() {
     gettimeofday(&tv, NULL);
     srand(tv.tv_usec ^ getpid());
 
-    // Discard first random value
-    rand();
-
     dungeon d;
 
 
