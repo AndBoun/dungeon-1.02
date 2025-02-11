@@ -58,14 +58,19 @@ typedef struct dungeon {
     floor_tile grid[DUNGEON_HEIGHT][DUNGEON_WIDTH];
     Room* rooms;       // Dynamically allocated array of rooms
     int num_rooms;     // Number of rooms in the dungeon
+    int current_room_idx;  // Bit field initialized to 0 by default
 } dungeon;
 
 
+void init_dungeon(dungeon *d);
+
 // Function prototypes updated to work with dungeon struct
 void generate_corridor(dungeon *d, int x1, int y1, int x2, int y2);
+
 int can_insert_room(dungeon *d, Room room);
 void generate_room(dungeon *d, Room room);
-bool generate_random_room(dungeon *d, int idx);
+bool generate_random_room(dungeon *d);
+
 int generate_random_stair(dungeon *d, char stair);
 bool place_stair(dungeon *d, int x, int y, char stair);
 

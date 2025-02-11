@@ -99,6 +99,7 @@ bool generate_random_dungeon(dungeon *d){
         // Generate a random number of rooms to generate
         num_rooms = MIN_ROOMS + rand() % (MAX_ROOMS - MIN_ROOMS + 1);
         d->num_rooms = num_rooms;
+        d->current_room_idx = 0;
         // printf("Number of rooms: %d\n", num_rooms);
         d->rooms = malloc(num_rooms * sizeof(Room));
 
@@ -106,7 +107,7 @@ bool generate_random_dungeon(dungeon *d){
         for (i = 0; i < num_rooms; i++) {
 
             // If attempt limit is reached, reset grid and try again
-            if (!generate_random_room(d, i)) {
+            if (!generate_random_room(d)) {
                 success = false;
                 break;
             }
@@ -138,6 +139,6 @@ bool generate_random_dungeon(dungeon *d){
     for (i = 0; i < num_down_stairs; i++){
         generate_random_stair(d, DOWN_STAIRS);
     }
-    
+
     return true;
 }

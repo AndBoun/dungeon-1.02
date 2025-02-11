@@ -14,6 +14,7 @@ int main() {
     srand(tv.tv_usec ^ getpid());
 
     dungeon d;
+    init_dungeon(&d);
 
     if (generate_random_dungeon(&d)) {
         print_grid(&d);
