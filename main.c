@@ -15,13 +15,13 @@ int main() {
 
     dungeon d;
 
-
     if (generate_random_dungeon(&d)) {
         print_grid(&d);
     } else {
         printf("Dungeon generation failed.\n");
     }
-    return 0;
 
     free(d.rooms);
+
+    return 0;
 }

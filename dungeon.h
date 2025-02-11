@@ -68,9 +68,11 @@ void generate_room(dungeon *d, Room room);
 bool generate_random_room(dungeon *d, int idx);
 int generate_random_stair(dungeon *d, char stair);
 bool place_stair(dungeon *d, int x, int y, char stair);
+
 void print_room_info(const dungeon *d);
 void print_hardness_info(const dungeon *d);
 void print_grid(const dungeon *d);
+
 bool generate_random_dungeon(dungeon *d);
 
 #endif
