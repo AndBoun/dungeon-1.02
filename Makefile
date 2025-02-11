@@ -1,7 +1,13 @@
-all: dungeon_generator
+all: main
 
-dungeon_generator: dungeon_generator.c
-	gcc dungeon_generator.c -o dungeon_generator -Wall -Werror
+main: main.o generator.o
+	gcc -g main.o generator.o -o main
+
+generator.o: generator.c dungeon.h
+	gcc -g generator.c -c -Wall -Werror
+
+main.o: main.c dungeon.h
+	gcc -g main.c -c -Wall -Werror
 
 clean:
-	rm -f dungeon_generator *~
+	rm -f *.o *~ main
