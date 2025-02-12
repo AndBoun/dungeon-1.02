@@ -219,7 +219,7 @@ int load_down_stairs(LoadSave *ls, Dungeon *d, int down) {
 int fill_in_corridors(Dungeon *d) {
     for (int i = 0; i < DUNGEON_HEIGHT; i++) {
         for (int j = 0; j < DUNGEON_WIDTH; j++) {
-            if (d->grid[i][j].type != FLOOR && d->grid[i][j].hardness == 0) {
+            if (d->grid[i][j].type == ROCK && d->grid[i][j].hardness == 0) {
                 d->grid[i][j].type = CORRIDOR;
             }
         }
