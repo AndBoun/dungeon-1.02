@@ -1,3 +1,27 @@
+commit 47b4261c03424c41c3c86cf4bef4e88330c19773
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Wed Feb 12 17:53:24 2025 -0600
+
+    remove unnessecary player placement after loading the player coordinates
+
+commit 9a933a6dbfab40afaf639c56ca7f63138e8fb1b2
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Wed Feb 12 15:15:38 2025 -0600
+
+    Set player position in the dungeon grid after loading
+
+commit 4fea65b42d2d0183f8075f5fe1133cb6b95f958a
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Wed Feb 12 14:58:19 2025 -0600
+
+    Fix typo in README.md for load_save.h description
+
+commit 58c4a728ba06d11f45e612b7185dfbffc9d3960c
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Wed Feb 12 01:40:46 2025 -0600
+
+    Add CHANGELOG and update README with project usage instructions
+
 commit be5665c4dcb5522abcdb01e77bda87c57a3dca44
 Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
 Date:   Wed Feb 12 01:19:48 2025 -0600
