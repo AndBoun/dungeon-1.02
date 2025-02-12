@@ -1,0 +1,91 @@
+commit be5665c4dcb5522abcdb01e77bda87c57a3dca44
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Wed Feb 12 01:19:48 2025 -0600
+
+    implemented flags for save and load
+
+commit 1faf097375f7511d0eaa67923a3399e16d1877ef
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Wed Feb 12 01:04:52 2025 -0600
+
+    implemented random placing of player
+
+commit 819883367fbce86bad0238af9fabb25d4ecea028
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Wed Feb 12 00:42:30 2025 -0600
+
+    implement saving functionality
+
+commit 7728508a815b9e69d161e5645113b708cc405163
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Tue Feb 11 23:48:05 2025 -0600
+
+    rename load_save.c to load.c. Created save.c
+
+commit 28345539e12bd800ae4653d47099603cbf5cd795
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Tue Feb 11 23:46:11 2025 -0600
+
+    added stair arrays to prepare for saving
+
+commit 73313240794ce6c42c31f5e00219b5fb3e7f3ad8
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Tue Feb 11 23:27:16 2025 -0600
+
+    implement loading functionality
+
+commit f7ff62a22dda3adbd276d4b2bdb2d07e578848bf
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Tue Feb 11 19:07:42 2025 -0600
+
+    Rename structs to match typical naming conventions
+
+commit ab4176a86f4de34c4a548c104e1b7edb2a1dda71
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Tue Feb 11 02:07:32 2025 -0600
+
+    Create init_dungeon method. Refactor random room generation methods to use an idx stored in the dungeon struct
+
+commit 377bedee190123119ee733a9fe31adab5bf1855e
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Tue Feb 11 01:56:29 2025 -0600
+
+    move print, room, and stair methods into their own classes. Remove unnessary print statement from generate_random_room
+
+commit b57afa84b8337f7483016cd7e72363a3ab54cd37
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Tue Feb 11 01:37:25 2025 -0600
+
+    remove srand declaration in helper method
+
+commit 8f65f9bf44d6418ae157e7811f56e000abd4d6bc
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Tue Feb 11 01:33:34 2025 -0600
+
+    Refactor program to use header and typedef struct for modularity
+
+commit 0a88ed473745f0c616d58b6fdaa7b31a7dbfeb36
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Mon Feb 10 17:49:55 2025 -0600
+
+    Update dungeon grid hardness calculation to set border hardness to maximum
+
+commit d4951b8c29474d45ee32c597be3d3e7436e83bd6
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Mon Feb 10 16:45:26 2025 -0600
+
+    rename dungeon_generator to generator.c.
+    
+    Initialize load_save.c
+
+commit ad057f8e36e9a3561542098e69d50fccb5de6468
+Author: AndBoun <167598896+AndBoun@users.noreply.github.com>
+Date:   Mon Feb 10 16:41:44 2025 -0600
+
+    Add assignment 1.01 code
+
+commit 49b9c6e4374c5ba6c24fb9e7f89b1b93f0362860
+Author: Andrew Boun <167598896+AndBoun@users.noreply.github.com>
+Date:   Mon Feb 10 16:38:56 2025 -0600
+
+    Initial commit
