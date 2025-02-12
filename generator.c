@@ -70,6 +70,20 @@ void generate_corridor(Dungeon *d, int x1, int y1, int x2, int y2){
     }
 }
 
+int place_player(Dungeon *d){
+    int x, y;
+    do {
+        x = rand() % PLACABLE_WIDTH + 1;
+        y = rand() % PLACABLE_HEIGHT + 1;
+    } while (d->grid[y][x].type == CORRIDOR || d->grid[y][x].type == ROCK);
+
+    d->pc_x = x;
+    d->pc_y = y;
+    d->grid[y][x].type = PLAYER;
+
+    return 1;
+}
+
 bool generate_random_dungeon(Dungeon *d){
     int i, j;
     int num_rooms;
@@ -88,7 +102,7 @@ bool generate_random_dungeon(Dungeon *d){
                 if (i == 0 || i == DUNGEON_HEIGHT - 1 || j == 0 || j == DUNGEON_WIDTH - 1) {
                     d->grid[i][j].hardness = MAX_HARDNESS;
                 } else{
-                    d->grid[i][j].hardness = rand() % (MAX_HARDNESS - 1 - MIN_HARDNESS + 1);
+                    d->grid[i][j].hardness = rand() % (MAX_HARDNESS - 1 - MIN_HARDNESS) + 1;
                 }
             }
         }
@@ -133,14 +147,16 @@ bool generate_random_dungeon(Dungeon *d){
     d->num_up_stairs = MIN_UP_STAIRS + rand() % (MAX_UP_STAIRS - MIN_UP_STAIRS + 1);
     d->up_stairs = malloc(d->num_up_stairs * sizeof(Stair));
     for (i = 0; i < d->num_up_stairs; i++){
-        generate_random_stair(d, UP_STAIRS);
+        generate_random_stair(d, UP_STAIRS, i);
     }
 
     d->num_down_stairs = MIN_DOWN_STAIRS + rand() % (MAX_DOWN_STAIRS - MIN_DOWN_STAIRS + 1);
     d->down_stairs = malloc(d->num_down_stairs * sizeof(Stair));
     for (i = 0; i < d->num_down_stairs; i++){
-        generate_random_stair(d, DOWN_STAIRS);
+        generate_random_stair(d, DOWN_STAIRS, i);
     }
+
+    place_player(d);
 
     return true;
 }

@@ -68,6 +68,9 @@ typedef struct {
     int num_up_stairs, num_down_stairs;
     Stair* up_stairs;
     Stair* down_stairs;
+    int current_up_stair_idx;
+    int current_down_stair_idx;
+
 } Dungeon;
 
 
@@ -80,7 +83,7 @@ int can_insert_room(Dungeon *d, Room room);
 void generate_room(Dungeon *d, Room room);
 bool generate_random_room(Dungeon *d);
 
-int generate_random_stair(Dungeon *d, char stair);
+int generate_random_stair(Dungeon *d, char stair, int idx);
 bool place_stair(Dungeon *d, int x, int y, char stair);
 
 void print_room_info(const Dungeon *d);
