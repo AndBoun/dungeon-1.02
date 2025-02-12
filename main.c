@@ -25,10 +25,12 @@ int main() {
     // } else {
     //     printf("Dungeon generation failed.\n");
     // }
-    // free(d.rooms);
+
 
     load_save(&d);
     print_grid(&d);
+
+    // save(&d);
 
     free(d.rooms);
     free(d.up_stairs);

@@ -1,7 +1,10 @@
 all: main
 
-main: main.o generator.o print.o room.o stair.o dungeon.o load.o
-	gcc -g main.o generator.o print.o room.o stair.o dungeon.o load_save.o -o main
+main: main.o generator.o print.o room.o stair.o dungeon.o load.o save.o
+	gcc -g main.o generator.o print.o room.o stair.o dungeon.o load.o save.o -o main
+
+save.o: save.c load_save.h dungeon.h
+	gcc -g save.c -c -Wall -Werror
 
 load.o: load.c load_save.h dungeon.h
 	gcc -g load.c -c -Wall -Werror
