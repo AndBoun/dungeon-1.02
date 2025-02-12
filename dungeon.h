@@ -13,6 +13,7 @@
 #define CORRIDOR '#'
 #define DOWN_STAIRS '>'
 #define UP_STAIRS '<'
+#define PLAYER '@'
 
 // Border characters for the Dungeon grid
 #define HORIZONTAL_BORDER '-'
@@ -59,6 +60,8 @@ typedef struct {
     Room* rooms;       // Dynamically allocated array of rooms
     int num_rooms;     // Number of rooms in the Dungeon
     int current_room_idx;  // Bit field initialized to 0 by default
+    int pc_x, pc_y;    // Player character coordinates
+    int num_up_stairs, num_down_stairs;
 } Dungeon;
 
 

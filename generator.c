@@ -130,13 +130,13 @@ bool generate_random_dungeon(Dungeon *d){
     }
 
     // Generate Stairs
-    int num_up_stairs = MIN_UP_STAIRS + rand() % (MAX_UP_STAIRS - MIN_UP_STAIRS + 1);
-    for (i = 0; i < num_up_stairs; i++){
+    d->num_up_stairs = MIN_UP_STAIRS + rand() % (MAX_UP_STAIRS - MIN_UP_STAIRS + 1);
+    for (i = 0; i < d->num_up_stairs; i++){
         generate_random_stair(d, UP_STAIRS);
     }
 
-    int num_down_stairs = MIN_DOWN_STAIRS + rand() % (MAX_DOWN_STAIRS - MIN_DOWN_STAIRS + 1);
-    for (i = 0; i < num_down_stairs; i++){
+    d->num_down_stairs = MIN_DOWN_STAIRS + rand() % (MAX_DOWN_STAIRS - MIN_DOWN_STAIRS + 1);
+    for (i = 0; i < d->num_down_stairs; i++){
         generate_random_stair(d, DOWN_STAIRS);
     }
 
