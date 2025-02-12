@@ -44,5 +44,8 @@ int load_up_stairs(LoadSave *ls, Dungeon *d, int u);
 int load_num_down_stairs(LoadSave *ls, Dungeon *d);
 int load_down_stairs(LoadSave *ls, Dungeon *d, int down);
 int fill_in_corridors(Dungeon *d);
+int load_save(Dungeon *d);
+
+
 
 #endif

@@ -131,11 +131,13 @@ bool generate_random_dungeon(Dungeon *d){
 
     // Generate Stairs
     d->num_up_stairs = MIN_UP_STAIRS + rand() % (MAX_UP_STAIRS - MIN_UP_STAIRS + 1);
+    d->up_stairs = malloc(d->num_up_stairs * sizeof(Stair));
     for (i = 0; i < d->num_up_stairs; i++){
         generate_random_stair(d, UP_STAIRS);
     }
 
     d->num_down_stairs = MIN_DOWN_STAIRS + rand() % (MAX_DOWN_STAIRS - MIN_DOWN_STAIRS + 1);
+    d->down_stairs = malloc(d->num_down_stairs * sizeof(Stair));
     for (i = 0; i < d->num_down_stairs; i++){
         generate_random_stair(d, DOWN_STAIRS);
     }

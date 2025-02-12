@@ -56,12 +56,18 @@ typedef struct {
 } FloorTile;
 
 typedef struct {
+    int x, y;
+} Stair;
+
+typedef struct {
     FloorTile grid[DUNGEON_HEIGHT][DUNGEON_WIDTH];
     Room* rooms;       // Dynamically allocated array of rooms
     int num_rooms;     // Number of rooms in the Dungeon
     int current_room_idx;  // Bit field initialized to 0 by default
     int pc_x, pc_y;    // Player character coordinates
     int num_up_stairs, num_down_stairs;
+    Stair* up_stairs;
+    Stair* down_stairs;
 } Dungeon;
 
 

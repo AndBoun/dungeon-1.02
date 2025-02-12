@@ -159,6 +159,7 @@ int load_num_up_stairs(LoadSave *ls, Dungeon *d) {
 
     num_up_stairs = be16toh(num_up_stairs);
     d->num_up_stairs = (int) num_up_stairs;
+    d->up_stairs = malloc(d->num_up_stairs * sizeof(Stair));
 
     return 0;
 }
@@ -174,6 +175,9 @@ int load_up_stairs(LoadSave *ls, Dungeon *d, int u) {
 
     for (int i = 0; i < u; i++) {
         d->grid[up_stairs[i * 2 + 1]][up_stairs[i * 2]].type = UP_STAIRS;
+        d->up_stairs[i].x = up_stairs[i * 2];
+        d->up_stairs[i].y = up_stairs[i * 2 + 1];
+
     }
 
     return 0;
@@ -190,6 +194,7 @@ int load_num_down_stairs(LoadSave *ls, Dungeon *d) {
 
     num_down_stairs = be16toh(num_down_stairs);
     d->num_down_stairs = (int) num_down_stairs;
+    d->down_stairs = malloc(d->num_down_stairs * sizeof(Stair));
 
     return 0;
 }
@@ -205,6 +210,8 @@ int load_down_stairs(LoadSave *ls, Dungeon *d, int down) {
 
     for (int i = 0; i < down; i++) {
         d->grid[down_stairs[i * 2 + 1]][down_stairs[i * 2]].type = DOWN_STAIRS;
+        d->down_stairs[i].x = down_stairs[i * 2];
+        d->down_stairs[i].y = down_stairs[i * 2 + 1];
     }
 
     return 0;
@@ -219,5 +226,67 @@ int fill_in_corridors(Dungeon *d) {
         }
     }
 
+    return 0;
+}
+
+int load_save(Dungeon *d){
+    int r, u, down;
+
+    LoadSave ls;
+    init_load_save(&ls, "rb");
+    // printf("Home: %s\n", ls.home);
+    // printf("Dungeon file: %s\n", ls.dungeon_file);
+
+    char* marker = load_marker(&ls);
+    // printf("Marker: %s\n", marker);
+    if (strcmp(marker, EXPECTED_MARKER) != 0) {
+        fprintf(stderr, "Error: Invalid marker\n");
+        free(marker);
+        fclose(ls.f);
+        free(ls.dungeon_file);
+        return 1;
+    }
+    free(marker);
+
+    load_version(&ls);
+    // uint32_t version = load_version(&ls);
+    // printf("Version: %u\n", version);
+
+    load_size(&ls);
+    // uint32_t size = load_size(&ls);
+    // printf("Size: %u\n", size);
+
+    load_pc(&ls, d); // player character
+    // printf("PC: x: %u \t y: %u \n", d->pc_x, d->pc_y);
+
+    load_hardness(&ls, d);
+    // print_hardness_info(d);
+
+    load_num_rooms(&ls, d);
+    r = d->num_rooms;
+    // printf("Number of rooms: %u\n", d->num_rooms);
+
+    load_rooms(&ls, d, r);
+    // print_grid(&d);
+
+    load_num_up_stairs(&ls, d);
+    u = d->num_up_stairs;
+    // printf("Number of up stairs: %u\n", d->num_up_stairs);
+
+    load_up_stairs(&ls, d, u);
+    // print_grid(d);
+
+    load_num_down_stairs(&ls, d);
+    down = d->num_down_stairs;
+    // printf("Number of down stairs: %u\n", d->num_down_stairs);
+
+    load_down_stairs(&ls, d, down);
+    // print_grid(d);
+
+    fill_in_corridors(d);
+    // print_grid(d);
+
+    fclose(ls.f);
+    free(ls.dungeon_file);
     return 0;
 }
