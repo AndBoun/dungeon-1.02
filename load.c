@@ -84,7 +84,6 @@ int load_pc(LoadSave *ls, Dungeon *d) {
     d->pc_x = (int) pc[0];
     d->pc_y = (int) pc[1];
 
-    d->grid[d->pc_y][d->pc_x].type = PLAYER;
 
     return 0;
 }
@@ -118,6 +117,7 @@ int load_num_rooms(LoadSave *ls, Dungeon *d) {
 
     num_rooms = be16toh(num_rooms);
     d->num_rooms = (int) num_rooms;
+    d->rooms = malloc(d->num_rooms * sizeof(Room));
 
     return 0;
 }
@@ -131,7 +131,6 @@ int load_rooms(LoadSave *ls, Dungeon *d, int r){
         return 1;
     }
 
-    d->rooms = malloc(r * sizeof(Room));
     for (int i = 0; i < r; i++){
         d->rooms[i].x = (int) rooms[i * 4];
         d->rooms[i].y = (int) rooms[i * 4 + 1];
@@ -220,7 +219,7 @@ int load_down_stairs(LoadSave *ls, Dungeon *d, int down) {
 int fill_in_corridors(Dungeon *d) {
     for (int i = 0; i < DUNGEON_HEIGHT; i++) {
         for (int j = 0; j < DUNGEON_WIDTH; j++) {
-            if (d->grid[i][j].type == ROCK && d->grid[i][j].hardness == 0) {
+            if (d->grid[i][j].type != FLOOR && d->grid[i][j].hardness == 0) {
                 d->grid[i][j].type = CORRIDOR;
             }
         }
