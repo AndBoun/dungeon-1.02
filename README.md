@@ -29,7 +29,7 @@ Run the project with flags:
 - Using both `--save` `--load` flags at the same time, will always load, then save the dungeon, regardless of which ever order you put the flags.
 
 ## How The Project Runs:
-The `load_save.h` header hold the structure for both loading and saving dungeons. First, in the main method, we check the flags the program in ran with, then decide to save, load, or do both.
+The `load_save.h` header holds the structure for both loading and saving dungeons. First, in the main method, we check the flags the program in ran with, then decide to save, load, or do both.
 If we load, we use the `load_save` method in the `load.c` file to go through each segment of the binary file, converting to Big Endian when ever necessary. Through this we slowly build up the dungeon, and eventually print it with statistics. 
 
 When saving, we first generate a randomized dungeon, then call the `save` method in `save.c` to begin writing the contents to binary. We write the necessary headers, calculate the size in bytes, and build write in the same way we originally loaded the data from.
