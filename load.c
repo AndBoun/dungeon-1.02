@@ -286,6 +286,8 @@ int load_save(Dungeon *d){
     fill_in_corridors(d);
     // print_grid(d);
 
+    d->grid[d->pc_y][d->pc_x].type = PLAYER;
+
     fclose(ls.f);
     free(ls.dungeon_file);
     return 0;
