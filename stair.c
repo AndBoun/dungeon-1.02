@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include "dungeon.h"
 
-bool place_stair(dungeon *d, int x, int y, char stair) {
+bool place_stair(Dungeon *d, int x, int y, char stair) {
     if (x > 0 && x <= PLACABLE_WIDTH && y > 0 && y < PLACABLE_HEIGHT) {
         d->grid[y][x].type = stair;
         d->grid[y][x].hardness = MIN_HARDNESS;
@@ -16,7 +16,7 @@ bool place_stair(dungeon *d, int x, int y, char stair) {
     return false;
 }
 
-int generate_random_stair(dungeon *d, char stair){
+int generate_random_stair(Dungeon *d, char stair){
     int x, y;
     do {
         x = (rand() % PLACABLE_WIDTH) + 1;

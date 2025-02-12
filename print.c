@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "dungeon.h"
 
-void print_hardness_info(const dungeon *d){
+void print_hardness_info(const Dungeon *d){
     for (int i = 0; i < DUNGEON_HEIGHT; i++){
         for (int j = 0; j < DUNGEON_WIDTH; j++){
             printf("%d ", d->grid[i][j].hardness);
@@ -16,7 +16,7 @@ void print_hardness_info(const dungeon *d){
 }
 
 // Prints grid with a border
-void print_grid(const dungeon *d){
+void print_grid(const Dungeon *d){
     for(int i = 0; i < DUNGEON_WIDTH + 2; i++){
         printf("%c", HORIZONTAL_BORDER);
     }
@@ -37,7 +37,7 @@ void print_grid(const dungeon *d){
     printf("\n");
 }
 
-void print_room_info(const dungeon *d){
+void print_room_info(const Dungeon *d){
     for (int i = 0; i < d->num_rooms; i++){
         printf("Room %d\n", i + 1);
         printf("x: %d\n", d->rooms[i].x);

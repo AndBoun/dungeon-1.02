@@ -7,14 +7,14 @@
 
 #include <stdbool.h>
 
-// Character definitions for the dungeon grid
+// Character definitions for the Dungeon grid
 #define ROCK ' '
 #define FLOOR '.'
 #define CORRIDOR '#'
 #define DOWN_STAIRS '>'
 #define UP_STAIRS '<'
 
-// Border characters for the dungeon grid
+// Border characters for the Dungeon grid
 #define HORIZONTAL_BORDER '-'
 #define VERTICAL_BORDER '|'
 
@@ -52,32 +52,32 @@ typedef struct {
 typedef struct {
     int hardness;
     char type;
-} floor_tile;
+} FloorTile;
 
-typedef struct dungeon {
-    floor_tile grid[DUNGEON_HEIGHT][DUNGEON_WIDTH];
+typedef struct {
+    FloorTile grid[DUNGEON_HEIGHT][DUNGEON_WIDTH];
     Room* rooms;       // Dynamically allocated array of rooms
-    int num_rooms;     // Number of rooms in the dungeon
+    int num_rooms;     // Number of rooms in the Dungeon
     int current_room_idx;  // Bit field initialized to 0 by default
-} dungeon;
+} Dungeon;
 
 
-void init_dungeon(dungeon *d);
+void init_dungeon(Dungeon *d);
 
-// Function prototypes updated to work with dungeon struct
-void generate_corridor(dungeon *d, int x1, int y1, int x2, int y2);
+// Function prototypes updated to work with Dungeon struct
+void generate_corridor(Dungeon *d, int x1, int y1, int x2, int y2);
 
-int can_insert_room(dungeon *d, Room room);
-void generate_room(dungeon *d, Room room);
-bool generate_random_room(dungeon *d);
+int can_insert_room(Dungeon *d, Room room);
+void generate_room(Dungeon *d, Room room);
+bool generate_random_room(Dungeon *d);
 
-int generate_random_stair(dungeon *d, char stair);
-bool place_stair(dungeon *d, int x, int y, char stair);
+int generate_random_stair(Dungeon *d, char stair);
+bool place_stair(Dungeon *d, int x, int y, char stair);
 
-void print_room_info(const dungeon *d);
-void print_hardness_info(const dungeon *d);
-void print_grid(const dungeon *d);
+void print_room_info(const Dungeon *d);
+void print_hardness_info(const Dungeon *d);
+void print_grid(const Dungeon *d);
 
-bool generate_random_dungeon(dungeon *d);
+bool generate_random_dungeon(Dungeon *d);
 
 #endif

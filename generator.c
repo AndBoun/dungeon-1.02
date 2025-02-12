@@ -9,7 +9,7 @@
 
 
 /**
- * Generates a corridor between two points in the dungeon grid.
+ * Generates a corridor between two points in the Dungeon grid.
  * The corridor can be horizontal, vertical, or diagonal based on random selection.
  * 
  * @param x1 The starting x-coordinate of the corridor
@@ -26,7 +26,7 @@
  * 1 - vertical movement
  * 2 - diagonal movement
  */
-void generate_corridor(dungeon *d, int x1, int y1, int x2, int y2){
+void generate_corridor(Dungeon *d, int x1, int y1, int x2, int y2){
     int x = x1;
     int y = y1;
 
@@ -70,7 +70,7 @@ void generate_corridor(dungeon *d, int x1, int y1, int x2, int y2){
     }
 }
 
-bool generate_random_dungeon(dungeon *d){
+bool generate_random_dungeon(Dungeon *d){
     int i, j;
     int num_rooms;
 

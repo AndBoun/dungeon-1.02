@@ -16,7 +16,7 @@
  * 1. If the room dimensions would exceed the placeable grid boundaries
  * 2. If the room area (including 1-tile border) would overlap with existing floor tiles
  */
-int can_insert_room(dungeon *d, Room room){
+int can_insert_room(Dungeon *d, Room room){
 
     // Check if room is within bounds
     // Do not check for '(x + width - 1) >= PLACEABLE' because we need to account for starting at 1
@@ -54,7 +54,7 @@ int can_insert_room(dungeon *d, Room room){
  * @pre can_insert_room must return true for the given room
  * @pre grid must be properly initialized
  */
-void generate_room(dungeon *d, Room room){
+void generate_room(Dungeon *d, Room room){
     for(int i = room.x; i < room.x + room.width; i++){
         for(int j = room.y; j < room.y + room.height; j++){
             d->grid[j][i].type = FLOOR;
@@ -78,7 +78,7 @@ void generate_room(dungeon *d, Room room){
  * @return true if room was successfully generated and placed
  * @return false if room could not be placed after maximum attempts
  */
-bool generate_random_room(dungeon *d){
+bool generate_random_room(Dungeon *d){
     Room room;
     int attempts = 0;
 

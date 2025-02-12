@@ -13,7 +13,7 @@ int main() {
     gettimeofday(&tv, NULL);
     srand(tv.tv_usec ^ getpid());
 
-    dungeon d;
+    Dungeon d;
     init_dungeon(&d);
 
     if (generate_random_dungeon(&d)) {
