@@ -12,7 +12,7 @@
 #include "dungeon.h"
 #include "load_save.h"
 
-int main() {
+int main(int argc, char *argv[]) {
     struct timeval tv;
     gettimeofday(&tv, NULL);
     srand(tv.tv_usec ^ getpid());
@@ -20,17 +20,34 @@ int main() {
     Dungeon d;
     init_dungeon(&d);
 
-    // if (generate_random_dungeon(&d)) {
-    //     print_grid(&d);
-    // } else {
-    //     printf("Dungeon generation failed.\n");
-    // }
+    int load_flag = 0;
+    int save_flag = 0;
 
+    // Parse command line arguments
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "--load") == 0) {
+            load_flag = 1;
+        } else if (strcmp(argv[i], "--save") == 0) {
+            save_flag = 1;
+        }
+    }
 
-    load_save(&d);
-    print_grid(&d);
+    if (load_flag) {
+        load_save(&d);
+        print_grid(&d);
+    } else {
+        if (generate_random_dungeon(&d)) {
+            print_grid(&d);
+        } else {
+            printf("Dungeon generation failed.\n");
+            return 1;
+        }
+    }
 
-    // save(&d);
+    if (save_flag) {
+        save(&d);
+        printf("Dungeon saved.\n");
+    }
 
     free(d.rooms);
     free(d.up_stairs);
